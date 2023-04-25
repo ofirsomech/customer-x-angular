@@ -10,4 +10,5 @@ export interface Customer {
   addressHouseNumber?: string;
   postalCode?: string;
   contracts?: Contract[];
+  expirationTime?: number;
 }

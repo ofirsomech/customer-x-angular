@@ -22,16 +22,12 @@ export class IdentificationComponent implements OnInit {
       // Call a service method to get the customer details based on the provided identity number
       this.customerService
         .getCustomerByIdentityNumber(this.identityNumber)
-        .subscribe(
-          (customer) => {
-            // Assign the retrieved customer to the component's customer property
-            this.customerService.customer = customer;
-          },
-          (error) => {
-            // Handle errors
-            console.error('Failed to retrieve customer details: ', error);
-          }
-        );
+        .toPromise()
+        .catch((error) => {
+          // Handle errors
+          console.error('Failed to retrieve customer details: ', error);
+          throw error;
+        });
     }
   }
 

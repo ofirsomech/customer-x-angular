@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Customer } from '../../models/customer.model';
+import { Router } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-customer-details',
@@ -10,9 +12,20 @@ import { CustomerService } from '../../services/customer.service';
 export class CustomerDetailsComponent {
   customer: Customer = {};
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.customer = this.customerService.getCustomer();
+    if (Object.keys(this.customer).length === 0) {
+      this.router.navigate(['/identification']);
+    }
+  }
+
+  goToIdentification(): void {
+    this.customerService.setCustomer({});
+    this.router.navigate(['/identification']);
   }
 }

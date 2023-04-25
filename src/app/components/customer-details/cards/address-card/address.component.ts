@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Customer } from '../../models/customer.model';
-import { CustomerService } from '../../services/customer.service';
+import { Component, Input } from '@angular/core';
+import { Customer } from '../../../../models/customer.model';
+import { CustomerService } from '../../../../services/customer.service';
 
 @Component({
   selector: 'app-address',
@@ -8,15 +8,11 @@ import { CustomerService } from '../../services/customer.service';
   styleUrls: ['./address.component.css'],
 })
 export class AddressComponent {
-  customer: Customer = {};
+  @Input() customer: Customer = {};
   isEditingAddress: boolean = false;
   isExpanded = false;
 
   constructor(private customerService: CustomerService) {}
-
-  ngOnInit(): void {
-    this.customer = this.customerService.getCustomer();
-  }
 
   toggleAddressExpanded() {
     this.isExpanded = !this.isExpanded;
