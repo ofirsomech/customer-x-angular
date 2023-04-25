@@ -1,7 +1,7 @@
 import { Contract } from './contract.model';
 
 export interface Customer {
-  id?: string;
+  id?: number;
   firstName?: string;
   lastName?: string;
   identityNumber?: string;

@@ -3,8 +3,8 @@ import { Package } from './package.model';
 import { Customer } from './customer.model';
 
 export interface Contract {
-  id: string;
-  customerID: string;
+  id: number;
+  customerID: number;
   subscriptionNumber: string;
   subscriberName: string;
   subscriptionType: SubscriptionType;
