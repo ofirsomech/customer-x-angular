@@ -1,11 +1,36 @@
-<div class="card">
-  <div class="card-header">
-    <h4 class="card-title">כתובת</h4>
-  </div>
-  <div class="card-body">
-    <p>{{ customer.address }}</p>
-    <p>{{ customer.city }}</p>
-    <p>{{ customer.country }}</p>
+<mat-expansion-panel [expanded]="isExpanded" (expandedChange)="toggleAddressExpanded()">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      כתובת
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div *ngIf="!isEditingAddress">
+    <p>{{ customer.addressCity }}</p>
+    <p>{{ customer.addressStreet }}</p>
+    <p>{{ customer.addressHouseNumber }}</p>
     <p>{{ customer.postalCode }}</p>
   </div>
-</div>
+  <div *ngIf="isEditingAddress">
+    <div class="form-group">
+      <label for="addressCity">עיר:</label>
+      <input type="text" class="form-control" id="addressCity" name="addressCity" [(ngModel)]="customer.addressCity">
+    </div>
+    <div class="form-group">
+      <label for="addressStreet">רחוב:</label>
+      <input type="text" class="form-control" id="addressStreet" name="addressStreet" [(ngModel)]="customer.addressStreet">
+    </div>
+    <div class="form-group">
+      <label for="addressHouseNumber">מספר בית:</label>
+      <input type="text" class="form-control" id="addressHouseNumber" name="addressHouseNumber" [(ngModel)]="customer.addressHouseNumber">
+    </div>
+    <div class="form-group">
+      <label for="postalCode">מיקוד:</label>
+      <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="customer.postalCode">
+    </div>
+  </div>
+  <mat-action-row>
+    <button mat-raised-button color="primary" (click)="toggleAddressEditing()">
+      {{ isEditingAddress ? 'שמור שינויים' : 'ערוך כתובת' }}
+    </button>
+  </mat-action-row>
+</mat-expansion-panel>

@@ -1,26 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { FormsModule } from '@angular/forms';
 import { IdentificationComponent } from './components/identification/identification.component';
-import { CustomerContainerComponent } from './containers/customer-container/customer-container.component';
-import { SubscriptionContainerComponent } from './containers/subscription-container/subscription-container.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomerDetailsComponent } from './components/customer-details/customer-details.component';
+import { AddressComponent } from './shared/address/address.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerDetailsComponent,
     IdentificationComponent,
-    CustomerContainerComponent,
-    SubscriptionContainerComponent
+    CustomerDetailsComponent,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
