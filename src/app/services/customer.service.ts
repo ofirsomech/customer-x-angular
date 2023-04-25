@@ -1,8 +1,8 @@
+import { Observable, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { Customer } from '../models/customer.model';
 import { SessionService } from './session.service';
+import { Customer } from '../models/customer.model';
 
 @Injectable({
   providedIn: 'root',

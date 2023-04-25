@@ -48,4 +48,3 @@ describe('SessionService', () => {
     expect(retrievedValue).toBeNull();
   });
 });
-

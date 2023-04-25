@@ -10,12 +10,12 @@ import { CustomerDetailsComponent } from './components/customer-details/customer
 import { AddressComponent } from './components/customer-details/cards/address-card/address.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from "@angular/material/icon";
+import { MatIconModule } from '@angular/material/icon';
 import { NameCardComponent } from './components/customer-details/cards/name-card/name-card.component';
 import { TableCardComponent } from './components/customer-details/cards/table-card/table-card.component';
-import {MatCardModule} from "@angular/material/card";
-import {MatTableModule} from "@angular/material/table";
-import {MatInputModule} from "@angular/material/input";
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [

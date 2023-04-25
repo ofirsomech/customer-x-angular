@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prettier:base": "prettier --parser typescript --single-quote",
+    "prettier:check": "npm run prettier:base -- --list-different \"src/**/*.ts\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.ts\""
   },
   "private": true,
   "dependencies": {

@@ -15,7 +15,10 @@ export class SessionService {
       value,
       expirationTime,
     };
-    sessionStorage.setItem(this.sessionPrefix + key, JSON.stringify(itemWithExpiration));
+    sessionStorage.setItem(
+      this.sessionPrefix + key,
+      JSON.stringify(itemWithExpiration)
+    );
   }
 
   getItem(key: string): any {
