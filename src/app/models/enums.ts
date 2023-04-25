@@ -1,7 +1,7 @@
 export enum SubscriptionType {
-  Basic = 'Basic',
-  Premium = 'Premium',
-  VIP = 'VIP',
+  Weekly = 'Weekly',
+  Monthly = 'Monthly',
+  Yearly = 'Yearly',
 }
 
 export enum PackageType {

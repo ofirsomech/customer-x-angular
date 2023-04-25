@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Customer } from '../../../../models/customer.model';
+import { Package } from '../../../../models/package.model';
+import { getSubscriptionsTypes } from '../../../../utils/texts';
 
 @Component({
   selector: 'app-table-card',
@@ -16,4 +18,5 @@ export class TableCardComponent {
     'amount',
     'used',
   ];
+  public getSubscriptionsTypes = getSubscriptionsTypes;
 }

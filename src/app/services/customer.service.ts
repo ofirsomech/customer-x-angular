@@ -1,6 +1,6 @@
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SessionService } from './session.service';
 import { Customer } from '../models/customer.model';
 
@@ -22,13 +22,27 @@ export class CustomerService {
       .pipe(
         tap((customer: Customer) => {
           this.setCustomer(customer);
+        }),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error getting customer by identity number:', error);
+          return throwError('Could not retrieve customer');
         })
       );
   }
 
   updateCustomerAddress(customer: Customer): Observable<any> {
     const url = `${this.apiUrl}/address/${customer.id}`;
-    return this.http.put(url, customer);
+    return this.http.put(url, customer).pipe(
+      tap(
+        (customer: Customer) => {
+          this.setCustomer(customer);
+        },
+        catchError((error: HttpErrorResponse) => {
+          console.error(error);
+          return throwError(error);
+        })
+      )
+    );
   }
 
   setCustomer(customer: Customer): void {
