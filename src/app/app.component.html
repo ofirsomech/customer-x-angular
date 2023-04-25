@@ -1,11 +1,9 @@
-<header>
-  <!-- Navbar or header content -->
-</header>
+<app-navbar></app-navbar>
 
-<main>
+<ng-container *ngIf="isLoggedIn()">
   <router-outlet></router-outlet>
-</main>
+</ng-container>
 
-<footer>
-  <!-- Footer content -->
-</footer>
+<ng-container *ngIf="!isLoggedIn()">
+  <app-login></app-login>
+</ng-container>

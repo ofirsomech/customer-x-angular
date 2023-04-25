@@ -14,13 +14,13 @@
         </div>
       </div>
       <div class="text-center">
-        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!identityNumberValid">זהות</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!identityNumberValid">חיפוש</button>
       </div>
     </form>
   </mat-card-content>
   <ng-container *ngIf="customerService.getCustomer() && Object.keys(customerService.getCustomer()).length > 0">
     <mat-card-actions class="text-center mt-4">
-      <button mat-raised-button color="primary" routerLink="/customer-details">צפייה בפרטי לקוח</button>
+      <button mat-raised-button color="primary" routerLink="/customer-details">צפייה בפרטי לקוח - {{ customerService.getCustomer().firstName}} {{ customerService.getCustomer().lastName}}</button>
     </mat-card-actions>
   </ng-container>
 </mat-card>

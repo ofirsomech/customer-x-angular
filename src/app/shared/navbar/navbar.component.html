@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">CustomerX</a>
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" routerLink="/identification">חיפוש</a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link logout" (click)="logout()" style="cursor: pointer">התנתק</a>
+      </li>
+    </ul>
+  </div>
+</nav>
