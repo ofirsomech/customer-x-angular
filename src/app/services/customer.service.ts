@@ -6,7 +6,7 @@ import { Customer } from '../models/customer.model';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { ModalService } from './modal.sercvice';
-import {SessionExpiredModalComponent} from "../modals/session-expired-modal/session-expired-modal.component";
+import { SessionExpiredModalComponent } from '../modals/session-expired-modal/session-expired-modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -24,22 +24,24 @@ export class CustomerService {
 
   getCustomerByIdentityNumber(identityNumber: string): Observable<Customer> {
     return this.http
-    .get<Customer>(`${this.apiUrl}/identity/${identityNumber}`)
-    .pipe(
-      tap((customer: Customer) => {
-        this.setCustomer(customer);
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error getting customer by identity number:', error);
-        if (error.status === 401) {
-          this.authService.logout();
-          this.modalService.open(SessionExpiredModalComponent);
-          return throwError('Session expired');
-        } else {
-          return throwError('Could not retrieve customer');
-        }
-      })
-    );
+      .get<Customer>(`${this.apiUrl}/identity/${identityNumber}`)
+      .pipe(
+        tap((customer: Customer) => {
+          this.setCustomer(customer);
+        }),
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error getting customer by identity number:', error);
+          if (error.status === 404) {
+            return throwError(error.error);
+          } else if (error.status === 401) {
+            this.authService.logout();
+            this.modalService.open(SessionExpiredModalComponent);
+            return throwError('Session expired');
+          } else {
+            return throwError('Could not retrieve customer');
+          }
+        })
+      );
   }
 
   updateCustomerAddress(customer: Customer): Observable<any> {
@@ -63,6 +65,7 @@ export class CustomerService {
   }
 
   getCustomer(): Customer {
-    return this.sessionService.getItem('customer');
+    const customer = this.sessionService.getItem('customer');
+    return customer ?  this.sessionService.getItem('customer') : {};
   }
 }

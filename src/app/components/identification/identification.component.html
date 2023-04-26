@@ -12,6 +12,9 @@
         <div class="invalid-feedback d-block" *ngIf="!identityNumberValid">
           יש להזין מספר תעודת זהות תקין בעל 9 ספרות
         </div>
+        <div class="invalid-feedback d-block" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
       </div>
       <div class="text-center">
         <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!identityNumberValid">חיפוש</button>

@@ -9,6 +9,7 @@ import { CustomerService } from '../../services/customer.service';
 export class IdentificationComponent implements OnInit {
   identityNumber: string = '';
   identityNumberValid: boolean = true;
+  errorMessage: string = '';
 
   constructor(public customerService: CustomerService) {}
 
@@ -22,10 +23,14 @@ export class IdentificationComponent implements OnInit {
       this.customerService
         .getCustomerByIdentityNumber(this.identityNumber)
         .toPromise()
+        .then((customer) => {
+          // Customer found
+          this.errorMessage = ''; // Set error message to empty string
+        })
         .catch((error) => {
           // Handle errors
           console.error('Failed to retrieve customer details: ', error);
-          throw error;
+          this.errorMessage = error;
         });
     }
   }

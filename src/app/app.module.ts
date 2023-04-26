@@ -22,6 +22,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { LoginComponent } from './shared/login/login.component';
 import { SessionExpiredModalComponent } from './modals/session-expired-modal/session-expired-modal.component';
+import { GraphDialogComponent } from './modals/graph-dialog/graph-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { GraphComponent } from './shared/graph/graph.component';
+import {BarChartModule} from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -35,6 +39,8 @@ import { SessionExpiredModalComponent } from './modals/session-expired-modal/ses
     NavbarComponent,
     NotFoundComponent,
     SessionExpiredModalComponent,
+    GraphDialogComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,8 @@ import { SessionExpiredModalComponent } from './modals/session-expired-modal/ses
     MatTableModule,
     MatInputModule,
     NgbModule,
+    MatDialogModule,
+    BarChartModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

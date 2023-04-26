@@ -1,0 +1,8 @@
+<div mat-dialog-title>{{data.packageName}}</div>
+<div mat-dialog-title>מזהה חבילה - {{data.id}}</div>
+<div mat-dialog-content>
+  <app-graph [data]="data"></app-graph>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">סגור</button>
+</div>
